@@ -1,41 +1,32 @@
+package com.ekta.arrays;
+
 public class Ex_01 {
 
+	
 	public static void main(String[] args) {
-		
-		new A().show();
-		
-		
+
+		int[] array={1,5,2,3,4,5,6,7,8,9};
+		System.out.print(returnDuplicate(array));
 
 	}
 
-}
-
-class A{
-	int a=20;
-	String name ="ekta";
-	
-	//String n2="ekta";
-	
-	String str=null;
-	
-	public void show(){
-		int a=90;
-		
-		name="sharma";
-		str="ekta";
-		System.out.println("a= " + this.a);
-		System.out.println("a= " + a);
-		
-		System.out.println("a= " + name);
-		System.out.println("a= " + this.name);
-		
-		
-		if(str==name){
-			System.out.println("true");
+	static int returnDuplicate(int[] array){
+		int i=0;
+		int count=1;
+		while(i<10){
+			int j=i+1;
+			while(j<10){
+				if(array[i]==array[j]){
+					count++;
+				}
+				j++;
+				if(count>1){
+					return array[i];
+				}
+			}
+			i++;
 		}
-		
-		if(str.equals(name)){
-			System.out.println("true");
-		}
+return 0;
 	}
+	
 }

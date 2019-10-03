@@ -1,128 +1,52 @@
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.ListIterator;
+package com.ekta.arrays;
 
 public class Ex_02 {
-
 	public static void main(String[] args) {
-		Date date = new Date();
-		long time = date.getTime();
-		System.out.println("Time in Milliseconds: " + time);
 
-		// lambda expression to implement above
-		// functional interface. This interface
-		// by default implements abstractFun()
-		FuncInterface fobj = (int x) -> System.out.println(2 * x);
-
-		// This calls above lambda expression and prints 10.
-		fobj.abstractFun(5);
-
-		
-		/**
-		 * searching through lambda expression
-		 */
-		Search search = (List<User> users) -> {
-			ListIterator<User> itr = users.listIterator();
-			while (itr.hasNext()) {
-				User user = itr.next();
-				if (user.getName().equalsIgnoreCase("john")) {
-					return user;
-				} 
+		int i=999;
+		int num=0;
+		boolean flag=false;
+		while(i>99){
+			int j=i;
+			while(j>99){
+				num=i*j;
+				if(checkPal(num)==num){
+					flag=true;
+					break;
+					
+				}
+				j--;
 			}
-			return null;
-		};
-
-		List<User> users = new ArrayList<>();
-
-		users.add(new User("ekta", 10, 20, "Delhi"));
-		users.add(new User("anu", 10, 20, "Mumbai"));
-		users.add(new User("ram", 10, 20, "chennai"));
-		users.add(new User("john", 10, 20, "calcutta"));
-		
-		
-		
-		users.forEach(search2->{ 
-			for(int i=0;i<users.size();i++){
-				System.out.println(users.get(i).getName());
+			if(flag){
+				break;
 			}
-		});
-		
-		
-		System.out.println((search.search(users)).getCity());
-
-		long time2 = date.getTime();
-		System.out.println("Time in Milliseconds: " + (time2 - time));
+			i--;
+		}
+		System.out.println(num);
 	}
-
-}
-
-interface FuncInterface {
-	// An abstract function
-	void abstractFun(int x);
-
-	// A non-abstract (or default) function
-	default void normalFun() {
-		System.out.println("Hello");
-	}
-}
-
-interface Search {
-	// An abstract function
-	User search(List<User> users);
 	
-	//void show(int a);
-
-	/*
-	 * // A non-abstract (or default) function default void normalFun() {
-	 * System.out.println("Hello"); }
-	 */
-}
-
-class User {
-	String name;
-	int id;
-	int age;
-	String city;
-
-	public User(String name, int id, int age, String city) {
-		super();
-		this.name = name;
-		this.id = id;
-		this.age = age;
-		this.city = city;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
+	static int checkPal(int num){
+		int actual=num;
+		int orig=num;
+		int rev=0;
+		int len=0;
+		while(num/10!=0){
+			len++;
+			num/=10;
+		}
+		int i=len;
+		while(actual>0  ){
+			int r=actual%10;
+			rev+=r*Math.pow(10, i);
+			actual/=10;
+			i--;
+		}
+		
+		if(orig==rev){
+			return rev;
+		}
+			
+		return 0;
 	}
 
 }
